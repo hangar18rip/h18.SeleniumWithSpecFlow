@@ -16,7 +16,7 @@ namespace h18.SpecFlow.SeleniumHookChrome
         int stepCount = 0;
         private bool disposedValue;
         readonly ScenarioContext scenarioContext;
-        readonly DriverConfiguration<ChromeOptions> driverConfiguration;
+        readonly HookChromeConfiguration driverConfiguration;
 
         public HookChrome(ScenarioContext context)
         {
@@ -25,7 +25,7 @@ namespace h18.SpecFlow.SeleniumHookChrome
             scenarioContext?.TryGetValue("driverConfiguraiton", out driverConfiguration);
             if (driverConfiguration == null)
             {
-                driverConfiguration = new DriverConfiguration<ChromeOptions>();
+                driverConfiguration = new HookChromeConfiguration();
             }
 #if DEBUG
             else
@@ -35,7 +35,7 @@ namespace h18.SpecFlow.SeleniumHookChrome
 #endif
         }
 
-        [BeforeScenario(Order = 100000)]
+        [BeforeScenario(Order = int.MaxValue)]
         public void RunBeforeScenario()
         {
             stepCount = 0;

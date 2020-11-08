@@ -17,7 +17,7 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            context.Add("driverConfiguraiton", new DriverConfiguration<ChromeOptions> { WindowsState = WindowsState.Maximize });
+            context.Add("driverConfiguraiton", new HookChromeConfiguration { WindowsState = WindowsState.Maximize });
         }
 
         [Given(@"the first number is (.*)")]

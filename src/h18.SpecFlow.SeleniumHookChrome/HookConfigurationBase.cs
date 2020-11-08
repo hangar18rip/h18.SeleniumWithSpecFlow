@@ -4,9 +4,9 @@ using System.Drawing;
 
 namespace h18.SpecFlow.SeleniumHookChrome
 {
-    public sealed class DriverConfiguration<T> where T : DriverOptions, new()
+    public abstract  class HookConfigurationBase<T> where T : DriverOptions, new()
     {
-        // Driver Optionss
+        // Driver Options
         public T DriverOptions { get; } = new T();
 
         // Driver default configuration override
@@ -22,5 +22,6 @@ namespace h18.SpecFlow.SeleniumHookChrome
         public bool AfterStepScreenShotEnabled { get; set; } = true;
         public bool BeforeScenarioScreenShotEnabled { get; set; } = false;
         public bool AfterScenarioScreenShotEnabled { get; set; } = true;
+
     }
 }
