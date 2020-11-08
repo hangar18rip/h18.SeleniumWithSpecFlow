@@ -3,7 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using TechTalk.SpecFlow;
 
@@ -17,10 +16,23 @@ namespace h18.SpecFlow.SeleniumHookChrome
         int stepCount = 0;
         private bool disposedValue;
         readonly ScenarioContext scenarioContext;
+        readonly DriverConfiguration<ChromeOptions> driverConfiguration;
 
         public HookChrome(ScenarioContext context)
         {
             scenarioContext = context;
+
+            scenarioContext?.TryGetValue("driverConfiguraiton", out driverConfiguration);
+            if (driverConfiguration == null)
+            {
+                driverConfiguration = new DriverConfiguration<ChromeOptions>();
+            }
+#if DEBUG
+            else
+            {
+                Trace.TraceInformation("Using UserDefined configuration");
+            }
+#endif
         }
 
         [BeforeScenario]
@@ -28,13 +40,12 @@ namespace h18.SpecFlow.SeleniumHookChrome
         {
             stepCount = 0;
             testContext = scenarioContext?.ScenarioContainer.Resolve<TestContext>();
-            var options = new ChromeOptions();
+
+
+            var options = driverConfiguration.DriverOptions ?? new ChromeOptions();
             options.AddArgument("no-sandbox");
             driver = new ChromeDriver(options);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Size = new Size(1920, 1080);
-            driver.Manage().Window.Position = new Point(0, 0);
+            ApplyConfiguration(driver);
 
             if (testContext != null && !Directory.Exists(testContext.TestResultsDirectory))
             {
@@ -43,6 +54,40 @@ namespace h18.SpecFlow.SeleniumHookChrome
             }
 
             scenarioContext?.Add("currentDriver", driver);
+        }
+
+        void ApplyConfiguration(ChromeDriver driver)
+        {
+            if (driver == null)
+            {
+                return;
+            }
+
+            var options = driver.Manage();
+
+
+            options.Timeouts().AsynchronousJavaScript = driverConfiguration.AsynchronousJavaScriptTimeout;
+            options.Timeouts().ImplicitWait = driverConfiguration.ImplicitWaitTimeout;
+            options.Timeouts().PageLoad = driverConfiguration.PageLoadTimeout;
+
+            options.Window.Position = driverConfiguration.WindowsPosition;
+            options.Window.Size = driverConfiguration.WindowsSize;
+
+            switch (driverConfiguration.WindowsState)
+            {
+                case WindowsState.FullScreen:
+                    options.Window.FullScreen();
+                    break;
+                case WindowsState.Maximize:
+                    options.Window.Maximize();
+                    break;
+                case WindowsState.Minimize:
+                    options.Window.Minimize();
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         [AfterScenario]
