@@ -23,6 +23,9 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         [Given(@"the first number is (.*)")]
         public void GivenTheFirstNumberIs(int p0)
         {
+            var driver = context.Get<ChromeDriver>("currentDriver");
+            driver.Manage().Window.Position = new System.Drawing.Point(200, 200);
+            driver.Manage().Window.Size = new System.Drawing.Size(200, 200);
         }
 
         [Given(@"the second number is (.*)")]
@@ -32,12 +35,17 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
             driver.Navigate().GoToUrl("https://www.bing.com");
         }
 
+        [Given(@"the third number is (.*)")]
+        public void GivenTheThirdNumberIs(int p0)
+        {
+            var driver = context.Get<ChromeDriver>("currentDriver");
+            driver.Manage().Window.FullScreen();
+            driver.Navigate().GoToUrl("https://www.microsoft.com");
+        }
+
         [When(@"the two numbers are added")]
         public void WhenTheTwoNumbersAreAdded()
         {
-            var driver = context.Get<ChromeDriver>("currentDriver");
-            driver.Manage().Window.Position = new System.Drawing.Point(200, 200);
-            driver.Manage().Window.Size = new System.Drawing.Size(200, 200);
         }
 
         [Then(@"the result should be (.*)")]
