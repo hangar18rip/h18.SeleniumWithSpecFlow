@@ -20,9 +20,9 @@ Package version number matches the Google Chrome version it targets
 
 Add a reference to the [nuget package](https://www.nuget.org/packages/h18.SpecFlow.SeleniumHookChrome/) in your SpecFlow test project.
 
-Add a ```specflow.json``` file in your test project with this content :
+Add a ```specflow.json``` file in your test project, set its ```Copy to Output Directory``` property to ```copy if newer``` and add this section into it :
 
-```
+```json
 {
   "stepAssemblies": [
     {
