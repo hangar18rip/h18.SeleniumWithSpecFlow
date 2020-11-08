@@ -12,9 +12,13 @@
     <RepositoryCommit></RepositoryCommit>
     <RepositoryBranch></RepositoryBranch>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome.git</RepositoryUrl>
     <IncludeSource>false</IncludeSource>
     <AssemblyName>h18.SpecFlow.SeleniumHookChrome</AssemblyName>
+    <Copyright>Olivier Delmotte</Copyright>
+    <PackageTags>Selenium,Specflow,Chrome</PackageTags>
+    <PackageProjectUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome</PackageProjectUrl>
+    <PackageLicenseExpression>https://raw.githubusercontent.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome/master/LICENSE</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
