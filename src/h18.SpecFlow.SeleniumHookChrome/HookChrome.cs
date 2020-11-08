@@ -27,12 +27,6 @@ namespace h18.SpecFlow.SeleniumHookChrome
             {
                 driverConfiguration = new HookChromeConfiguration();
             }
-#if DEBUG
-            else
-            {
-                Trace.TraceInformation("Using UserDefined configuration");
-            }
-#endif
         }
 
         [BeforeScenario(Order = int.MaxValue)]
