@@ -68,6 +68,7 @@ stages:
         publishLocation: 'pipeline'
 - stage: Publish
   displayName: Publish
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
   - job: Publish
     displayName: Publish
