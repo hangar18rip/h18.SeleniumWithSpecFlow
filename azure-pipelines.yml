@@ -3,9 +3,11 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-name: 0.0.0.$(rev:r)
+name: 86.0.0.$(rev:r)
 trigger:
-- main
+  branches:
+    include:
+    - '*'  # must quote since "*" is a YAML reserved character; we want a string
 
 pool:
   vmImage: 'windows-latest'
@@ -13,43 +15,61 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-steps:
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'SonarCloud Olivier Delmotte'
-    organization: 'odelmotte'
-    scannerMode: 'MSBuild'
-    projectKey: 'hangar18rip.h18.SpecFlow.SeleniumHookChrome'
-    projectName: '[h18] SpecFlow.SeleniumHookChrome'
-    projectVersion: '$(Build.BuildNumber)'
-- script: dotnet restore
-  workingDirectory: src/
-  displayName: 'dotnet restore'
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build $(buildConfiguration)'
-  inputs:
-    command: 'build'
-    arguments: '--no-restore -p:Version=$(Build.BuildNumber) -p:AssemblyVersion=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:AssemblyInformationalVersionAttribute="GitHub_Commit-$(Build.SourceVersion)'
-    workingDirectory: 'src/'
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet test'
-  inputs:
-    command: 'test'
-    arguments: '--no-restore --no-build --verbosity normal --collect "Code coverage"'
-    testRunTitle: 'Unit Tests'
-    workingDirectory: 'src/'
-- task: SonarCloudAnalyze@1
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: 'src/'
-    Contents: '**/*.nupkg'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/nuget'
-    flattenFolders: true
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/nuget'
-    artifact: 'nuget'
-    publishLocation: 'pipeline'
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Build
+    displayName: Build
+    steps:
+    - task: SonarCloudPrepare@1
+      displayName: Prepae SonarCloud analysis
+      inputs:
+        SonarCloud: 'SonarCloud Olivier Delmotte'
+        organization: 'odelmotte'
+        scannerMode: 'MSBuild'
+        projectKey: 'hangar18rip.h18.SpecFlow.SeleniumHookChrome'
+        projectName: '[h18] SpecFlow.SeleniumHookChrome'
+        projectVersion: '$(Build.BuildNumber)'
+    - script: dotnet restore
+      workingDirectory: src/
+      displayName: 'dotnet restore'
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet build $(buildConfiguration)'
+      inputs:
+        command: 'build'
+        arguments: '--no-restore -p:Version=$(Build.BuildNumber) -p:AssemblyVersion=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:AssemblyInformationalVersionAttribute="GitHub_Commit-$(Build.SourceVersion)'
+        workingDirectory: 'src/'
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet test'
+      inputs:
+        command: 'test'
+        arguments: '--no-restore --no-build --verbosity normal --collect "Code coverage"'
+        testRunTitle: 'Unit Tests'
+        workingDirectory: 'src/'
+    - task: SonarCloudAnalyze@1
+      displayName: Run SonarCloud analysis
+    - task: SonarCloudPublish@1
+      displayName: Wait for SonarCloud analysis
+      inputs:
+        pollingTimeoutSec: '300'
+    - task: CopyFiles@2
+      displayName: Create artifact
+      inputs:
+        SourceFolder: 'src/'
+        Contents: '**/*.nupkg'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/nuget'
+        flattenFolders: true
+    - task: PublishPipelineArtifact@1
+      displayName: Publish artifact
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/nuget'
+        artifact: 'nuget'
+        publishLocation: 'pipeline'
+- stage: Publish
+  displayName: Publish
+  jobs:
+  - job: Publish
+    displayName: Publish
+    steps:
+    - checkout: none
