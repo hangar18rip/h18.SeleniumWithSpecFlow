@@ -1,0 +1,33 @@
+name: Build and Package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+      working-directory: src/
+    - name: Build
+      run: dotnet build --configuration Release --no-restore -p:Version=0.0.0.$($env:GITHUB_RUN_NUMBER) -p:AssemblyVersion=0.0.0.$($env:GITHUB_RUN_NUMBER) -p:FileVersion=0.0.0.$($env:GITHUB_RUN_NUMBER) -p:AssemblyInformationalVersionAttribute="GitHub_Commit-$($env:GITHUB_SHA)"
+      working-directory: src/
+    - name: Test
+      run: dotnet test --configuration Release --no-restore --no-build --verbosity normal --collect "Code coverage"
+      working-directory: src/
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.0
+      with:
+        name: drop
+        path: 'src/h18.SpecFlow.SeleniumHookChrome/bin/Release/h18.SpecFlow.SeleniumHookChrome.*.nupkg'

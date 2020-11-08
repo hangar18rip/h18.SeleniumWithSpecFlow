@@ -1,0 +1,7 @@
+{
+  "stepAssemblies": [
+    {
+      "assembly": "h18.SpecFlow.SeleniumHookChrome"
+    }
+  ]
+}

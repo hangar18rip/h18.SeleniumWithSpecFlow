@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>h18.SpecFlow.SeleniumHookChrome</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Olivier Delmotte</Authors>
+    <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework</Description>
+    <NuspecProperties></NuspecProperties>
+    <ContentTargetFolders>myspecialcontent</ContentTargetFolders>
+    <AssemblyInformationalVersionAttribute>No value at edit time</AssemblyInformationalVersionAttribute>
+    <RepositoryCommit></RepositoryCommit>
+    <RepositoryBranch></RepositoryBranch>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git</RepositoryUrl>
+    <IncludeSource>false</IncludeSource>
+    <AssemblyName>h18.SpecFlow.SeleniumHookChrome</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="specflow.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="86.0.4240.2200" />
+    <PackageReference Include="SpecFlow.MsTest" Version="3.4.31" />
+  </ItemGroup>
+
+</Project>
