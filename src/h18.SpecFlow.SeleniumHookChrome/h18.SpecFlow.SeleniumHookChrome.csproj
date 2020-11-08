@@ -18,7 +18,8 @@
     <Copyright>Olivier Delmotte</Copyright>
     <PackageTags>Selenium,Specflow,Chrome</PackageTags>
     <PackageProjectUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome</PackageProjectUrl>
-    <PackageLicenseExpression>https://raw.githubusercontent.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome/master/LICENSE</PackageLicenseExpression>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +31,13 @@
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="86.0.4240.2200" />
     <PackageReference Include="SpecFlow.MsTest" Version="3.4.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
