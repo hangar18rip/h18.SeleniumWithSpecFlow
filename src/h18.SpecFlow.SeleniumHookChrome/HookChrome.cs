@@ -35,7 +35,7 @@ namespace h18.SpecFlow.SeleniumHookChrome
 #endif
         }
 
-        [BeforeScenario]
+        [BeforeScenario(Order = 100000)]
         public void RunBeforeScenario()
         {
             stepCount = 0;
@@ -54,6 +54,10 @@ namespace h18.SpecFlow.SeleniumHookChrome
             }
 
             scenarioContext?.Add("currentDriver", driver);
+
+
+            SaveScreen(driverConfiguration.BeforeScenarioScreenShotEnabled, $"{testContext?.TestName}_before.png");
+
         }
 
         void ApplyConfiguration(ChromeDriver driver)
@@ -93,20 +97,32 @@ namespace h18.SpecFlow.SeleniumHookChrome
         [AfterScenario]
         public void RunAfterScenario()
         {
-            SaveScreen($"{testContext?.TestName}.png");
+            SaveScreen(driverConfiguration.AfterScenarioScreenShotEnabled, $"{testContext?.TestName}_after.png");
+
             driver?.Quit();
+        }
+
+        [BeforeStep]
+        public void RunBeforeStep()
+        {
+            SaveScreen(driverConfiguration.BeforeStepScreenShotEnabled, $"{testContext?.TestName}_step_{stepCount}_before.png");
+            stepCount++;
         }
 
         [AfterStep]
         public void RunAfterStep()
         {
+            SaveScreen(driverConfiguration.AfterStepScreenShotEnabled, $"{testContext?.TestName}_step_{stepCount}_after.png");
 
-            SaveScreen($"{testContext?.TestName}_step_{stepCount}.png");
             stepCount++;
         }
 
-        private void SaveScreen(string fileName)
+        private void SaveScreen(bool doIt, string fileName)
         {
+            if (!doIt)
+            {
+                return;
+            }
             if (driver == null) { return; }
             try
             {
