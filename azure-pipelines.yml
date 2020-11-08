@@ -25,7 +25,7 @@ stages:
     - task: SonarCloudPrepare@1
       displayName: Prepae SonarCloud analysis
       inputs:
-        SonarCloud: 'SonarCloud Olivier Delmotte'
+        SonarCloud: 'SonarCloud'
         organization: 'odelmotte'
         scannerMode: 'MSBuild'
         projectKey: 'hangar18rip.h18.SpecFlow.SeleniumHookChrome'
@@ -73,3 +73,13 @@ stages:
     displayName: Publish
     steps:
     - checkout: none
+    - download: current
+      artifact: nuget
+    - task: NuGetCommand@2
+      displayName: 'NuGet push'
+      inputs:
+        command: push
+        nuGetFeedType: external
+        packagesToPush: '$(Pipeline.Workspace)/nuget/*.nupkg;!$(Pipeline.Workspace)/nuget/*.symbols.nupkg'
+        publishFeedCredentials: NuGet
+      
