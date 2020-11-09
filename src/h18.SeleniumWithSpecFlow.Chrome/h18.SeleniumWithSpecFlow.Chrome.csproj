@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>h18.SeleniumWithSpecFlow.Chrome</RootNamespace>
     <AssemblyName>h18.SeleniumWithSpecFlow.Chrome</AssemblyName>
+    <RootNamespace>h18.SeleniumWithSpecFlow.Chrome</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
     <Authors>Olivier Delmotte</Authors>
-    <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework</Description>
+    <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework in Google Chrome</Description>
+    
     <NuspecProperties></NuspecProperties>
     <ContentTargetFolders>myspecialcontent</ContentTargetFolders>
     <AssemblyInformationalVersionAttribute>No value at edit time</AssemblyInformationalVersionAttribute>

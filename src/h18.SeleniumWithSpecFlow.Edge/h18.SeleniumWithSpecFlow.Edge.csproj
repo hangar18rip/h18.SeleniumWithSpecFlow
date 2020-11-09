@@ -4,7 +4,10 @@
     <AssemblyName>h18.SeleniumWithSpecFlow.Edge</AssemblyName>
     <RootNamespace>h18.SeleniumWithSpecFlow.Edge</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
     <Authors>Olivier Delmotte</Authors>
+    <Description></Description>
+
     <NuspecProperties></NuspecProperties>
     <ContentTargetFolders>myspecialcontent</ContentTargetFolders>
     <AssemblyInformationalVersionAttribute>No value at edit time</AssemblyInformationalVersionAttribute>
