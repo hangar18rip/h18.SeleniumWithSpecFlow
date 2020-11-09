@@ -1,31 +1,36 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Diagnostics;
 using System.IO;
 using TechTalk.SpecFlow;
 
-namespace h18.SpecFlow.SeleniumHookChrome
+namespace h18.SeleniumWithSpecFlow.Core
 {
     [Binding]
-    public class HookChrome : IDisposable
+    public abstract class HookBase<T, U, V> : IDisposable
+        where T : RemoteWebDriver, new()
+        where U : DriverOptions, new()
+        where V : HookConfigurationBase<U>, new()
     {
-        ChromeDriver driver;
+        private bool disposedValue;
+        T driver;
+        readonly V driverConfiguration;
+        readonly ScenarioContext scenarioContext;
         TestContext testContext;
         int stepCount = 0;
-        private bool disposedValue;
-        readonly ScenarioContext scenarioContext;
-        readonly HookChromeConfiguration driverConfiguration;
 
-        public HookChrome(ScenarioContext context)
+        protected abstract T GetDriver(U options);
+
+        protected HookBase(ScenarioContext context)
         {
             scenarioContext = context;
 
             scenarioContext?.TryGetValue("driverConfiguraiton", out driverConfiguration);
             if (driverConfiguration == null)
             {
-                driverConfiguration = new HookChromeConfiguration();
+                driverConfiguration = new V();
             }
         }
 
@@ -36,9 +41,8 @@ namespace h18.SpecFlow.SeleniumHookChrome
             testContext = scenarioContext?.ScenarioContainer.Resolve<TestContext>();
 
 
-            var options = driverConfiguration.DriverOptions ?? new ChromeOptions();
-            options.AddArgument("no-sandbox");
-            driver = new ChromeDriver(options);
+            var options = driverConfiguration.DriverOptions ?? new U();
+            driver = GetDriver(options);
             ApplyConfiguration(driver);
 
             if (testContext != null && !Directory.Exists(testContext.TestResultsDirectory))
@@ -54,7 +58,7 @@ namespace h18.SpecFlow.SeleniumHookChrome
 
         }
 
-        void ApplyConfiguration(ChromeDriver driver)
+        void ApplyConfiguration(T driver)
         {
             if (driver == null)
             {
@@ -133,6 +137,7 @@ namespace h18.SpecFlow.SeleniumHookChrome
             }
         }
 
+        #region IDisposable implem
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -155,5 +160,6 @@ namespace h18.SpecFlow.SeleniumHookChrome
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+        #endregion
     }
 }

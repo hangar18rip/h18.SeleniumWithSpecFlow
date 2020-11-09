@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>h18.SeleniumWithSpecFlow.Chrome</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Olivier Delmotte</Authors>
+    <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework</Description>
+    <NuspecProperties></NuspecProperties>
+    <ContentTargetFolders>myspecialcontent</ContentTargetFolders>
+    <AssemblyInformationalVersionAttribute>No value at edit time</AssemblyInformationalVersionAttribute>
+    <RepositoryCommit></RepositoryCommit>
+    <RepositoryBranch></RepositoryBranch>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome.git</RepositoryUrl>
+    <IncludeSource>false</IncludeSource>
+    <AssemblyName>h18.SeleniumWithSpecFlow.Chrome</AssemblyName>
+    <Copyright>Olivier Delmotte</Copyright>
+    <PackageTags>Selenium,Specflow,Chrome</PackageTags>
+    <PackageProjectUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome</PackageProjectUrl>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="specflow.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="86.0.4240.2200" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\h18.SeleniumWithSpecFlow.Core\h18.SeleniumWithSpecFlow.Core.csproj" />
+  </ItemGroup>
+
+</Project>

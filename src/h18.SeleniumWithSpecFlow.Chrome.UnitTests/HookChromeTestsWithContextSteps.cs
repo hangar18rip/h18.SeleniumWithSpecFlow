@@ -1,15 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using h18.SeleniumWithSpecFlow.Core;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
 
-namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
+namespace h18.SeleniumWithSpecFlow.Chrome.UnitTests
 {
     [Binding]
-    public class HookChromeTestsWithContextSteps
+    public class ChromeHookTestsWithContextSteps
     {
-        private ScenarioContext context;
+        private readonly ScenarioContext context;
 
-        public HookChromeTestsWithContextSteps(ScenarioContext context)
+        public ChromeHookTestsWithContextSteps(ScenarioContext context)
         {
             this.context = context;
         }
@@ -17,7 +18,7 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            context.Add("driverConfiguraiton", new HookChromeConfiguration { WindowsState = WindowsState.Maximize });
+            context.Add("driverConfiguraiton", new ChromeHookConfiguration { WindowsState = WindowsState.Maximize });
         }
 
         [Given(@"the first number is (.*)")]
@@ -46,6 +47,7 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         [When(@"the two numbers are added")]
         public void WhenTheTwoNumbersAreAdded()
         {
+            // not used
         }
 
         [Then(@"the result should be (.*)")]

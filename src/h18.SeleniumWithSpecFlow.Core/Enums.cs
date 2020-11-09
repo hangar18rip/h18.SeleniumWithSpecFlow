@@ -1,4 +1,4 @@
-﻿namespace h18.SpecFlow.SeleniumHookChrome
+﻿namespace h18.SeleniumWithSpecFlow.Core
 {
     public enum WindowsState
     {

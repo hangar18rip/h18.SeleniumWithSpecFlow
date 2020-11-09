@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>h18.SeleniumWithSpecFlow.Edge</AssemblyName>
+    <RootNamespace>h18.SeleniumWithSpecFlow.Edge</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Edge.SeleniumTools" Version="3.141.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\h18.SeleniumWithSpecFlow.Core\h18.SeleniumWithSpecFlow.Core.csproj" />
+  </ItemGroup>
+
+</Project>
