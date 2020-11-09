@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
+namespace h18.SeleniumWithSpecFlow.Edge.UnitTests
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,7 +20,7 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class HookChromeTestsWithContextFeature
+    public partial class EdgeHookTestsWithContextFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -29,7 +29,7 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "HookChromeTestsWithContext.feature"
+#line 1 "EdgeHookTestsWithContext.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -48,7 +48,7 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "HookChromeTestsWithContext", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "EdgeHookTestsWithContext", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
                     "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -64,9 +64,9 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         public virtual void TestInitialize()
         {
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "HookChromeTestsWithContext")))
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "EdgeHookTestsWithContext")))
             {
-                global::h18.SpecFlow.SeleniumHookChrome.UnitTests.HookChromeTestsWithContextFeature.FeatureSetup(null);
+                global::h18.SeleniumWithSpecFlow.Edge.UnitTests.EdgeHookTestsWithContextFeature.FeatureSetup(null);
             }
         }
         
@@ -94,7 +94,7 @@ namespace h18.SpecFlow.SeleniumHookChrome.UnitTests
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add two numbers")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "HookChromeTestsWithContext")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EdgeHookTestsWithContext")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public virtual void AddTwoNumbers()
         {

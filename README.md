@@ -1,8 +1,10 @@
-# h18.SpecFlow.SeleniumHookChrome
+# h18.SeleniumWithSpecFlow
 
-This Specflow Hook handles Chrome setup and screenshot saving.
+This Specflow Hook handles browser setup and screenshot saving.
 
-Works with MSTest and Google Chrome
+Works with MSTest and currently supports :
+- Microsoft Edge Chromium
+- Google Chrome
 
 Package version number matches the Google Chrome version it targets
 
@@ -22,11 +24,23 @@ Add a reference to the [nuget package](https://www.nuget.org/packages/h18.SpecFl
 
 Add a ```specflow.json``` file in your test project, set its ```Copy to Output Directory``` property to ```copy if newer``` and add this section into it :
 
+For Microsoft Edge Chromium :
 ```json
 {
   "stepAssemblies": [
     {
-      "assembly": "h18.SpecFlow.SeleniumHookChrome"
+      "assembly": "h18.SeleniumWithSpecFlow.Edge"
+    }
+  ]
+}
+```
+
+For Chrome :
+```json
+{
+  "stepAssemblies": [
+    {
+      "assembly": "h18.SeleniumWithSpecFlow.Chrome"
     }
   ]
 }
