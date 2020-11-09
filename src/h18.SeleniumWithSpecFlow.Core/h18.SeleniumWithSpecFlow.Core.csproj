@@ -1,24 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>h18.SeleniumWithSpecFlow.Core</AssemblyName>
+    <RootNamespace>h18.SeleniumWithSpecFlow.Core</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    
     <Authors>Olivier Delmotte</Authors>
+    <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework in Google Chrome</Description>
+    
     <NuspecProperties></NuspecProperties>
     <ContentTargetFolders>myspecialcontent</ContentTargetFolders>
     <AssemblyInformationalVersionAttribute>No value at edit time</AssemblyInformationalVersionAttribute>
     <RepositoryCommit></RepositoryCommit>
     <RepositoryBranch></RepositoryBranch>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/hangar18rip/h18.SeleniumWithSpecFlow.git</RepositoryUrl>
     <IncludeSource>false</IncludeSource>
-    <AssemblyName>h18.SeleniumWithSpecFlow.Core</AssemblyName>
     <Copyright>Olivier Delmotte</Copyright>
-    <PackageTags>Selenium,Specflow,Chrome</PackageTags>
-    <PackageProjectUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome</PackageProjectUrl>
+    <PackageTags>Selenium,Specflow</PackageTags>
+    <PackageProjectUrl>https://github.com/hangar18rip/h18.SeleniumWithSpecFlow</PackageProjectUrl>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <RootNamespace>h18.SeleniumWithSpecFlow.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

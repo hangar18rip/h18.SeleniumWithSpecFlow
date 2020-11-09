@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "h18.SeleniumWithSpecFlow.Ch
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "h18.SeleniumWithSpecFlow.Chrome.UnitTests", "h18.SeleniumWithSpecFlow.Chrome.UnitTests\h18.SeleniumWithSpecFlow.Chrome.UnitTests.csproj", "{BB2A1D53-A57E-4DFC-8159-F2DB62196CDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "h18.SeleniumWithSpecFlow.Core", "h18.SeleniumWithSpecFlow.Core\h18.SeleniumWithSpecFlow.Core.csproj", "{DE25AEA2-B210-49D7-9E4B-BBD5F6DFA254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "h18.SeleniumWithSpecFlow.Core", "h18.SeleniumWithSpecFlow.Core\h18.SeleniumWithSpecFlow.Core.csproj", "{DE25AEA2-B210-49D7-9E4B-BBD5F6DFA254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "h18.SeleniumWithSpecFlow.Edge", "h18.SeleniumWithSpecFlow.Edge\h18.SeleniumWithSpecFlow.Edge.csproj", "{89DC0F94-C7AE-4269-B3A5-62009A5013D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "h18.SeleniumWithSpecFlow.Edge", "h18.SeleniumWithSpecFlow.Edge\h18.SeleniumWithSpecFlow.Edge.csproj", "{89DC0F94-C7AE-4269-B3A5-62009A5013D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "h18.SeleniumWithSpecFlow.Edge.UnitTests", "h18.SeleniumWithSpecFlow.Edge.UnitTests\h18.SeleniumWithSpecFlow.Edge.UnitTests.csproj", "{19FB87F6-A800-4455-A96C-73995FE70435}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "h18.SeleniumWithSpecFlow.Edge.UnitTests", "h18.SeleniumWithSpecFlow.Edge.UnitTests\h18.SeleniumWithSpecFlow.Edge.UnitTests.csproj", "{19FB87F6-A800-4455-A96C-73995FE70435}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
