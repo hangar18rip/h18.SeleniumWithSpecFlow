@@ -28,7 +28,7 @@ stages:
         SonarCloud: 'SonarCloud'
         organization: 'odelmotte'
         scannerMode: 'MSBuild'
-        projectKey: 'hangar18rip.h18.SpecFlow.SeleniumHookChrome'
+        projectKey: 'hangar18rip.h18.SeleniumWithSpecFlow'
         projectName: '[h18] SpecFlow.SeleniumHookChrome'
         projectVersion: '$(Build.BuildNumber)'
     - script: dotnet restore
