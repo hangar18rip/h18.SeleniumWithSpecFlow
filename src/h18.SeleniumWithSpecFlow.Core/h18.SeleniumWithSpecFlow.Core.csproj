@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>h18.SeleniumWithSpecFlow.Core</AssemblyName>
+    <RootNamespace>h18.SeleniumWithSpecFlow.Core</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Olivier Delmotte</Authors>
     <NuspecProperties></NuspecProperties>
@@ -12,13 +14,11 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome.git</RepositoryUrl>
     <IncludeSource>false</IncludeSource>
-    <AssemblyName>h18.SeleniumWithSpecFlow.Core</AssemblyName>
     <Copyright>Olivier Delmotte</Copyright>
     <PackageTags>Selenium,Specflow,Chrome</PackageTags>
     <PackageProjectUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome</PackageProjectUrl>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <RootNamespace>h18.SeleniumWithSpecFlow.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

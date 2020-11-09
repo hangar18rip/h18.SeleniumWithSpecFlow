@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>h18.SeleniumWithSpecFlow.Chrome</RootNamespace>
+    <AssemblyName>h18.SeleniumWithSpecFlow.Chrome</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Olivier Delmotte</Authors>
     <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework</Description>
@@ -14,7 +15,6 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome.git</RepositoryUrl>
     <IncludeSource>false</IncludeSource>
-    <AssemblyName>h18.SeleniumWithSpecFlow.Chrome</AssemblyName>
     <Copyright>Olivier Delmotte</Copyright>
     <PackageTags>Selenium,Specflow,Chrome</PackageTags>
     <PackageProjectUrl>https://github.com/hangar18rip/h18.SpecFlow.SeleniumHookChrome</PackageProjectUrl>
