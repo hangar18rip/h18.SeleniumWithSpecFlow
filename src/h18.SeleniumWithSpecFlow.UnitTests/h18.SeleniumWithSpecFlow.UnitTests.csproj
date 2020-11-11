@@ -4,13 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+    <FakesUseV2Generation>true</FakesUseV2Generation>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="FakesAssemblies\**" />
     <EmbeddedResource Remove="FakesAssemblies\**" />
-    <None Remove="FakesAssemblies\**" />
+    <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
   </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeCoverage" Version="16.8.0" />
@@ -18,18 +20,23 @@
     <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="16.7.4-beta.20330.2" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>
 
+
   <ItemGroup>
-    <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
+    <None Include="Fakes\WebDriver.fakes" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\h18.SeleniumWithSpecFlow\h18.SeleniumWithSpecFlow.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WebDriver.3.141.0.0.Fakes">
+      <HintPath>FakesAssemblies\WebDriver.3.141.0.0.Fakes.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
   </ItemGroup>
 
 </Project>
