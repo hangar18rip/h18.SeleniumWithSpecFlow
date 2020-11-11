@@ -83,4 +83,10 @@ stages:
         nuGetFeedType: external
         packagesToPush: '$(Pipeline.Workspace)/nuget/*.nupkg;!$(Pipeline.Workspace)/nuget/*.symbols.nupkg'
         publishFeedCredentials: NuGet
-      
+    - task: GitHubRelease@1
+      displayName: 'GitHub release (create)'
+      inputs:
+        gitHubConnection: 'GitHub - Release'
+        releaseNotesSource: inline
+        assets: '$(Pipeline.Workspace)/nuget/*.nupkg'
+        isDraft: true
