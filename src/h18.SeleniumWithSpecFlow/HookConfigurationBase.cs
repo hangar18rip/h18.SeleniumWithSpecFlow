@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace h18.SeleniumWithSpecFlow.Core
+namespace h18.SeleniumWithSpecFlow
 {
     public abstract  class HookConfigurationBase<T> where T : DriverOptions, new()
     {

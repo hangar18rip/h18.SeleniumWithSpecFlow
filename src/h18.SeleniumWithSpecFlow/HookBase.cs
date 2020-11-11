@@ -6,11 +6,11 @@ using System.Diagnostics;
 using System.IO;
 using TechTalk.SpecFlow;
 
-namespace h18.SeleniumWithSpecFlow.Core
+namespace h18.SeleniumWithSpecFlow
 {
     [Binding]
     public abstract class HookBase<T, U, V> : IDisposable
-        where T : RemoteWebDriver, new()
+        where T : RemoteWebDriver //, new()
         where U : DriverOptions, new()
         where V : HookConfigurationBase<U>, new()
     {

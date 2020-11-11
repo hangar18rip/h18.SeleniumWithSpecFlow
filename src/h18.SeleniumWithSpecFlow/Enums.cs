@@ -1,4 +1,4 @@
-﻿namespace h18.SeleniumWithSpecFlow.Core
+﻿namespace h18.SeleniumWithSpecFlow
 {
     public enum WindowsState
     {
