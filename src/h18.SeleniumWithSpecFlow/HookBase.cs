@@ -58,7 +58,7 @@ namespace h18.SeleniumWithSpecFlow
 
         }
 
-        void ApplyConfiguration(T driver)
+        internal void ApplyConfiguration(T driver)
         {
             if (driver == null)
             {
