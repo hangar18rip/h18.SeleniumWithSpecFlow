@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     
     <Authors>Olivier Delmotte</Authors>
-    <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework in Google Chrome</Description>
+    <Description>Adds extended features when running Selenium tests with SpecFlow and MSTest framework</Description>
     
     <NuspecProperties></NuspecProperties>
     <ContentTargetFolders>myspecialcontent</ContentTargetFolders>
