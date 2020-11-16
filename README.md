@@ -2,6 +2,10 @@
 
 This package offers basic implementation to use Selenium features with SpecFlow and MSTest framework
 
+[![Build Status](https://dev.azure.com/hangar18github/hangar_18/_apis/build/status/hangar18rip.h18.SeleniumWithSpecFlow?repoName=hangar18rip%2Fh18.SeleniumWithSpecFlow&branchName=master)](https://dev.azure.com/hangar18github/hangar_18/_build/latest?definitionId=13&repoName=hangar18rip%2Fh18.SeleniumWithSpecFlow&branchName=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hangar18rip.h18.SeleniumWithSpecFlow&metric=alert_status)](https://sonarcloud.io/dashboard?id=hangar18rip.h18.SeleniumWithSpecFlow)
+
+[Get on NuGet](https://www.nuget.org/packages/h18.SeleniumWithSpecFlow/)
+
 # Implementation
 
 This package provides the base implementation of a SpecFlow binding and a configuration for this binding
