@@ -9,19 +9,20 @@ using TechTalk.SpecFlow;
 namespace h18.SeleniumWithSpecFlow
 {
     [Binding]
-    public abstract class HookBase<T, U, V> : IDisposable
-        where T : RemoteWebDriver //, new()
+    public abstract class HookBase<T, U> : IDisposable
+        where T : RemoteWebDriver
         where U : DriverOptions, new()
-        where V : HookConfigurationBase<U>, new()
     {
-        private bool disposedValue;
+        bool disposedValue;
         T driver;
-        readonly V driverConfiguration;
+        readonly HookConfigurationBase<U> driverConfiguration;
         readonly ScenarioContext scenarioContext;
         TestContext testContext;
         int stepCount = 0;
 
         protected abstract T GetDriver(U options);
+        protected abstract HookConfigurationBase<U> GetDefaultConfiguration();
+
 
         protected HookBase(ScenarioContext context)
         {
@@ -30,7 +31,7 @@ namespace h18.SeleniumWithSpecFlow
             scenarioContext?.TryGetValue(Keys.DriverConfigurationRegistrationKey, out driverConfiguration);
             if (driverConfiguration == null)
             {
-                driverConfiguration = new V();
+                driverConfiguration = GetDefaultConfiguration();
             }
         }
 

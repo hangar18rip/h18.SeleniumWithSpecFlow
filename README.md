@@ -4,7 +4,7 @@ This package offers basic implementation to use Selenium features with SpecFlow 
 
 [![Build Status](https://dev.azure.com/hangar18github/hangar_18/_apis/build/status/hangar18rip.h18.SeleniumWithSpecFlow?repoName=hangar18rip%2Fh18.SeleniumWithSpecFlow&branchName=master)](https://dev.azure.com/hangar18github/hangar_18/_build/latest?definitionId=13&repoName=hangar18rip%2Fh18.SeleniumWithSpecFlow&branchName=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hangar18rip.h18.SeleniumWithSpecFlow&metric=alert_status)](https://sonarcloud.io/dashboard?id=hangar18rip.h18.SeleniumWithSpecFlow)
 
-[Get on NuGet](https://www.nuget.org/packages/h18.SeleniumWithSpecFlow/)
+[Get from NuGet](https://www.nuget.org/packages/h18.SeleniumWithSpecFlow/)
 
 # Implementation
 
@@ -28,8 +28,8 @@ The configuration allows to control the behavior of the binding :
 public void BeforeScenario()
 {
     var conf = new h18.SeleniumWithSpecFlow.Edge.EdgeHookConfiguration();
-    // Set conf
-    Context.Set(conf, "driverConfiguraiton");
+    // Register configuration into ScenarioContext
+    Context.Set(conf, h18.SeleniumWithSpecFlow.Keys.DriverConfigurationRegistrationKey);
 }
 ```
 
@@ -40,9 +40,13 @@ public void BeforeScenario()
 public void GivenIGoToTheHomePage()
 {
     // Get the driver
-    _driver = Context.Get<IWebDriver>("currentDriver");
+    _driver = Context.Get<IWebDriver>(h18.SeleniumWithSpecFlow.Keys.DriverRegistrationKey);
     // Use the driver
     _driver.Navigate().GoToUrl(ExecutionContext.Current.ApplicationUri);
 }
 ```
 
+## Implementations
+
+- [Google Chome](https://github.com/hangar18rip/h18.SeleniumWithSpecFlow.Chrome)
+- [Microsoft Edge Chromium](https://github.com/hangar18rip/h18.SeleniumWithSpecFlow.Edge)

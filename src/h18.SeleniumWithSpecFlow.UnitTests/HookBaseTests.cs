@@ -1,5 +1,6 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
 
 namespace h18.SeleniumWithSpecFlow.UnitTests
@@ -13,7 +14,7 @@ namespace h18.SeleniumWithSpecFlow.UnitTests
 
         }
 
-        private class FakeHook : HookBase<OpenQA.Selenium.Chrome.ChromeDriver, OpenQA.Selenium.Chrome.ChromeOptions, FakeConfig>
+        private class FakeHook : HookBase<OpenQA.Selenium.Chrome.ChromeDriver, OpenQA.Selenium.Chrome.ChromeOptions>
         {
             public FakeHook(ScenarioContext context) : base(context)
             {
@@ -23,6 +24,11 @@ namespace h18.SeleniumWithSpecFlow.UnitTests
             protected override OpenQA.Selenium.Chrome.ChromeDriver GetDriver(OpenQA.Selenium.Chrome.ChromeOptions options)
             {
                 return new OpenQA.Selenium.Chrome.ChromeDriver(options);
+            }
+
+            protected override HookConfigurationBase<ChromeOptions> GetDefaultConfiguration()
+            {
+                return new FakeConfig();
             }
         }
 

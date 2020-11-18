@@ -5,7 +5,7 @@ using System.Drawing;
 namespace h18.SeleniumWithSpecFlow
 {
     public abstract  class HookConfigurationBase<T> where T : DriverOptions, new()
-    {
+    {        
         // Driver Options
         public T DriverOptions { get; } = new T();
 
