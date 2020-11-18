@@ -27,7 +27,7 @@ namespace h18.SeleniumWithSpecFlow
         {
             scenarioContext = context;
 
-            scenarioContext?.TryGetValue("driverConfiguraiton", out driverConfiguration);
+            scenarioContext?.TryGetValue(Keys.DriverConfigurationRegistrationKey, out driverConfiguration);
             if (driverConfiguration == null)
             {
                 driverConfiguration = new V();
@@ -51,8 +51,9 @@ namespace h18.SeleniumWithSpecFlow
                 Directory.CreateDirectory(testContext.TestResultsDirectory);
             }
 
-            scenarioContext?.Add("currentDriver", driver);
+            scenarioContext?.Add(Keys.DriverRegistrationKey, driver);
 
+            Trace.TraceInformation($"Driver registered with key {Keys.DriverRegistrationKey}");
 
             SaveScreen(driverConfiguration.BeforeScenarioScreenShotEnabled, $"{testContext?.TestName}_before.png");
 
