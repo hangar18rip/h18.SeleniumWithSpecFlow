@@ -9,84 +9,20 @@ trigger:
     include:
     - '*'  # must quote since "*" is a YAML reserved character; we want a string
 
-pool:
-  vmImage: 'windows-latest'
+resources:
+  repositories:
+  - repository: pipelines  # identifier (A-Z, a-z, 0-9, and underscore)
+    type: github  # see the following "Type" topic
+    name: hangar18rip/azdo-pipeline-library
+    endpoint: 'hangar18rip'
 
-variables:
-  buildConfiguration: 'Release'
-
-stages:
-- stage: Build
-  displayName: Build
-  jobs:
-  - job: Build
-    displayName: Build
-    steps:
-    - task: SonarCloudPrepare@1
-      displayName: Prepae SonarCloud analysis
-      inputs:
-        SonarCloud: 'SonarCloud'
-        organization: 'odelmotte'
-        scannerMode: 'MSBuild'
-        projectKey: 'hangar18rip.h18.SeleniumWithSpecFlow'
-        projectName: '[h18] h18.SeleniumWithSpecFlow'
-        projectVersion: '$(Build.BuildNumber)'
-    - script: dotnet restore
-      workingDirectory: src/
-      displayName: 'dotnet restore'
-    - task: DotNetCoreCLI@2
-      displayName: 'dotnet build $(buildConfiguration)'
-      inputs:
-        command: 'build'
-        arguments: '--no-restore -p:Version=$(Build.BuildNumber) -p:AssemblyVersion=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:AssemblyInformationalVersionAttribute="GitHub_Commit-$(Build.SourceVersion)'
-        workingDirectory: 'src/'
-    - task: DotNetCoreCLI@2
-      displayName: 'dotnet test'
-      inputs:
-        command: 'test'
-        arguments: '--no-restore --no-build --verbosity normal --collect "Code coverage"'
-        testRunTitle: 'Unit Tests'
-        workingDirectory: 'src/'
-    - task: SonarCloudAnalyze@1
-      displayName: Run SonarCloud analysis
-    - task: SonarCloudPublish@1
-      displayName: Wait for SonarCloud analysis
-      inputs:
-        pollingTimeoutSec: '300'
-    - task: CopyFiles@2
-      displayName: Create artifact
-      inputs:
-        SourceFolder: 'src/'
-        Contents: '**/*.nupkg'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)/nuget'
-        flattenFolders: true
-    - task: PublishPipelineArtifact@1
-      displayName: Publish artifact
-      inputs:
-        targetPath: '$(Build.ArtifactStagingDirectory)/nuget'
-        artifact: 'nuget'
-        publishLocation: 'pipeline'
-- stage: Publish
-  displayName: Publish
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  jobs:
-  - job: Publish
-    displayName: Publish
-    steps:
-    - checkout: none
-    - download: current
-      artifact: nuget
-    - task: NuGetCommand@2
-      displayName: 'NuGet push'
-      inputs:
-        command: push
-        nuGetFeedType: external
-        packagesToPush: '$(Pipeline.Workspace)/nuget/*.nupkg;!$(Pipeline.Workspace)/nuget/*.symbols.nupkg'
-        publishFeedCredentials: NuGet
-    - task: GitHubRelease@1
-      displayName: 'GitHub release (create)'
-      inputs:
-        gitHubConnection: 'GitHub - Release'
-        releaseNotesSource: inline
-        assets: '$(Pipeline.Workspace)/nuget/*.nupkg'
-        isDraft: true
+extends:
+  template: h18.SeleniumWithSpecFlow.yml@pipelines
+  parameters:
+    SonarCloudConnection: 'SonarCloud'
+    SonarCloudOrganization: 'odelmotte'
+    SonarCloudProjectKey: 'hangar18rip.h18.SeleniumWithSpecFlow'
+    SonarCloudProjectName: '[h18] h18.SeleniumWithSpecFlow'
+    NuGetConnection: 'NuGet'
+    BrowserName: 'GoogleChrome'
+    BrowserVersion: 88
